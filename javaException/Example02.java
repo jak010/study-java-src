@@ -3,7 +3,7 @@ package javaException;
 public class Example02 {
 
     public static void main(String[] args) {
-        method1();
+//        method1();
     }
 
     static void method1() throws Exception {
