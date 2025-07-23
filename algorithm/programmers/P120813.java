@@ -1,6 +1,6 @@
 package algorithm.programmers;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 
 public class P120813 {
 
@@ -26,9 +26,21 @@ public class P120813 {
         return answer;
     }
 
+    public ArrayList<Integer> solution2(int n) {
+        ArrayList<Integer> arr = new ArrayList<>();
+
+        for (int i = 1; i <= n; i++) {
+            if (i % 2 != 0) {
+                arr.add(i);
+            }
+        }
+        return arr;
+    }
+
     public static void main(String[] args) {
         P120813 solution = new P120813();
-        System.out.print(Arrays.toString(solution.solution(10)));
+//        System.out.print(Arrays.toString(solution.solution(10)));
+        System.out.print(solution.solution2(15));
     }
 
 }
