@@ -1,8 +1,5 @@
 package programmers;
 
-import jdk.jshell.VarSnippet;
-
-import java.util.ArrayList;
 import java.util.Arrays;
 
 public class P120813 {
