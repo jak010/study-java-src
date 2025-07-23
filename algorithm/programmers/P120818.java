@@ -1,4 +1,4 @@
-package programmers;
+package algorithm.programmers;
 
 public class P120818 {
 
