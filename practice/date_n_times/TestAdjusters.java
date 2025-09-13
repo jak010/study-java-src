@@ -1,8 +1,7 @@
-package notepad.date_n_times;
+package practice.date_n_times;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
-import java.time.temporal.TemporalAdjuster;
 import java.time.temporal.TemporalAdjusters;
 
 /**

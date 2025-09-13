@@ -1,4 +1,4 @@
-package notepad.date_n_times;
+package practice.date_n_times;
 
 import java.time.LocalDate;
 import java.time.Period;

@@ -1,4 +1,4 @@
-package notepad.date_n_times;
+package practice.date_n_times;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
@@ -14,7 +14,6 @@ public class TestCalendarPrinter {
 
         System.out.println("month : ");
         int month = scanner.nextInt();
-
         printCalendar(year, month);
     }
 

@@ -1,7 +1,6 @@
-package notepad.date_n_times;
+package practice.date_n_times;
 
 import java.time.*;
-import java.time.chrono.IsoEra;
 
 public class TestZone {
 

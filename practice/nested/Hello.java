@@ -1,4 +1,4 @@
-package notepad.nested;
+package practice.nested;
 
 public interface Hello {
 
