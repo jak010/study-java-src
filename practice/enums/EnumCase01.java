@@ -1,9 +1,6 @@
 package practice.enums;
 
 
-import com.sun.org.apache.bcel.internal.generic.CALOAD;
-import com.sun.org.apache.bcel.internal.generic.SWAP;
-
 /**
  * Enum을 잘못 사용하는 예제
  */
