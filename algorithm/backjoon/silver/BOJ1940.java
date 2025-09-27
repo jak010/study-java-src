@@ -15,6 +15,8 @@ import java.util.StringTokenizer;
 
 public class BOJ1940 {
 
+    private static int anInt;
+
     public static void main(String[] args) throws IOException {
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -26,7 +28,7 @@ public class BOJ1940 {
         int[] partNumbers = new int[numberOfParts]; // 제공된 재료의 수만큼 초기화
         int count = 0;
 
-        for (int i=0; i<numberOfParts; i ++) {
+        for (int i = 0; i < numberOfParts; i++) {
             partNumbers[count++] = Integer.parseInt(st.nextToken());
         }
 
@@ -36,9 +38,12 @@ public class BOJ1940 {
         int j = partNumbers.length - 1;
         int answer = 0;
         while (i < j) {
-            if (partNumbers[i] + partNumbers[j] < targetNumber) {
+
+            int sum = partNumbers[i] + partNumbers[j];
+
+            if (sum < targetNumber) {
                 i++;
-            } else if (partNumbers[i] + partNumbers[j] > targetNumber) {
+            } else if (sum > targetNumber) {
                 j--;
             } else {
                 answer++;
