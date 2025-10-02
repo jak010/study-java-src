@@ -47,23 +47,23 @@ public class Customer {
         return result;
     }
 
-    private static double amountFor(Rental each, double thisAmount) {
+    private static double amountFor(Rental each, double aRental) {
         switch (each.getMovie().getPriceCode()) {
             case Movie.REGULAR:
-                thisAmount += 2;
+                aRental += 2;
                 if (each.getDaysRented() > 2) {
-                    thisAmount += (each.getDaysRented() - 2) * 1.5;
+                    aRental += (each.getDaysRented() - 2) * 1.5;
                 }
             case Movie.NEW_RELEASE:
-                thisAmount += each.getDaysRented() * 3;
+                aRental += each.getDaysRented() * 3;
                 break;
             case Movie.CHILDRENS:
-                thisAmount += 1.5;
+                aRental += 1.5;
                 if (each.getDaysRented() > 3) {
-                    thisAmount += (each.getDaysRented() - 3) * 1.5;
+                    aRental += (each.getDaysRented() - 3) * 1.5;
                 }
                 break;
         }
-        return thisAmount;
+        return aRental;
     }
 }
