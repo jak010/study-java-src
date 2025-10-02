@@ -29,7 +29,7 @@ public class Customer {
             double thisAmount = 0;
             Rental each = (Rental) rentals.nextElement();
 
-            thisAmount = amountFor(each, thisAmount);
+            thisAmount = each.getCharge();
 
             frequentRenterPoints++;
 
@@ -45,26 +45,5 @@ public class Customer {
 
         }
         return result;
-    }
-
-    // xxx, 25-10-03 : aRetnal이 직관적인 변수명인가 ?
-    private static double amountFor(Rental each, double aRental) {
-        switch (each.getMovie().getPriceCode()) {
-            case Movie.REGULAR:
-                aRental += 2;
-                if (each.getDaysRented() > 2) {
-                    aRental += (each.getDaysRented() - 2) * 1.5;
-                }
-            case Movie.NEW_RELEASE:
-                aRental += each.getDaysRented() * 3;
-                break;
-            case Movie.CHILDRENS:
-                aRental += 1.5;
-                if (each.getDaysRented() > 3) {
-                    aRental += (each.getDaysRented() - 3) * 1.5;
-                }
-                break;
-        }
-        return aRental;
     }
 }
