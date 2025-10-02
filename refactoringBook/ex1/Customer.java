@@ -26,19 +26,18 @@ public class Customer {
         String result = "Rental Record for " + getName() + "\n";
 
         while (rentals.hasMoreElements()) {
-            double thisAmount = 0;
-            Rental each = (Rental) rentals.nextElement();
 
-            thisAmount = each.getCharge();
+            Rental each = (Rental) rentals.nextElement();
 
             frequentRenterPoints++;
 
             if ((each.getMovie().getPriceCode() == Movie.NEW_RELEASE) && (each.getDaysRented() > 1)) {
                 frequentRenterPoints++;
             }
-            result += "\t" + each.getMovie().getTitle() + "\t" + String.valueOf(thisAmount) + "\n";
+            result += "\t" + each.getMovie().getTitle() + "\t" + String.valueOf(each.getCharge())+"\n";
 
-            totalAmount += thisAmount;
+            totalAmount += each.getCharge();
+            ;
 
             result += "누적 대여료 " + String.valueOf(totalAmount) + "\n";
             result += "적립 포인트" + String.valueOf(frequentRenterPoints) + " frequent renter points\n";
