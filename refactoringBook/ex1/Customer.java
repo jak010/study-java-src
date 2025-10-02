@@ -47,6 +47,7 @@ public class Customer {
         return result;
     }
 
+    // xxx, 25-10-03 : aRetnal이 직관적인 변수명인가 ?
     private static double amountFor(Rental each, double aRental) {
         switch (each.getMovie().getPriceCode()) {
             case Movie.REGULAR:
