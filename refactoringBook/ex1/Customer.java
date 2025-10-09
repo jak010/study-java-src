@@ -29,8 +29,8 @@ public class Customer {
 
             Rental each = (Rental) rentals.nextElement();
 
-            frequentRenterPoints = each.getFrequentRenterPoints();
-            result += "\t" + each.getMovie().getTitle() + "\t" + String.valueOf(each.getCharge()) + "\n";
+            frequentRenterPoints = each._movie.getFrequentRenterPoints(each.getDaysRented());
+            result += "\t" + each.getMovie().getTitle() + "\t" + String.valueOf(each._movie.getCharge(each.getDaysRented())) + "\n";
 
 
             result += "누적 대여료 " + String.valueOf(getTotalCharge()) + "\n";
@@ -47,7 +47,7 @@ public class Customer {
         while (rentals.hasMoreElements()) {
             Rental each = (Rental) rentals.nextElement();
             // 모든 대여 비디오 정보와 대여료를 출력
-            result += "<P>" + each.getMovie().getTitle() + " : " + String.valueOf(each.getCharge()) + "</P>";
+            result += "<P>" + each.getMovie().getTitle() + " : " + String.valueOf(each._movie.getCharge(each.getDaysRented())) + "</P>";
         }
         // 푸터 행 추가
         result += "<P>누적 대여료 : " + String.valueOf(getTotalCharge()) + "</P>";
@@ -61,7 +61,7 @@ public class Customer {
         Enumeration rentals = _rentals.elements();
         while (rentals.hasMoreElements()) {
             Rental each = (Rental) rentals.nextElement();
-            result += each.getCharge();
+            result += each._movie.getCharge(each.getDaysRented());
         }
         return result;
     }
@@ -71,7 +71,7 @@ public class Customer {
         Enumeration rentals = _rentals.elements();
         while (rentals.hasMoreElements()) {
             Rental each = (Rental) rentals.nextElement();
-            result += each.getFrequentRenterPoints();
+            result += each._movie.getFrequentRenterPoints(each.getDaysRented());
         }
         return result;
     }
