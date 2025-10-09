@@ -40,6 +40,22 @@ public class Customer {
         return result;
     }
 
+    public String htmlStatement() {
+        Enumeration rentals = _rentals.elements();
+        String result = "<H1>" + getName() + " 고객님의 대여 기록</H1>";
+
+        while (rentals.hasMoreElements()) {
+            Rental each = (Rental) rentals.nextElement();
+            // 모든 대여 비디오 정보와 대여료를 출력
+            result += "<P>" + each.getMovie().getTitle() + " : " + String.valueOf(each.getCharge()) + "</P>";
+        }
+        // 푸터 행 추가
+        result += "<P>누적 대여료 : " + String.valueOf(getTotalCharge()) + "</P>";
+        result += "<P>적립 포인트 : " + String.valueOf(getTotalFrequentRenterPoints()) + "</P>";
+        return result;
+
+    }
+
     private double getTotalCharge() {
         double result = 0;
         Enumeration rentals = _rentals.elements();
