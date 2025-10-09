@@ -1,67 +1,57 @@
 package refactoringBook.ex1;
 
 
+import lombok.Getter;
+import lombok.Setter;
+
 public class Movie {
 
     public static final int CHILDRENS = 2;
     public static final int REGULAR = 1;
     public static final int NEW_RELEASE = 0;
 
+    @Setter
+    @Getter
     private String title;
-    private int priceCode;
+    private Price price;
 
     public Movie(String title, int priceCode) {
         this.title = title;
-        this.priceCode = priceCode;
+        setPrice(priceCode);
     }
 
-    public String getTitle() {
-        return title;
+    public Price getPriceCode() {
+        return price;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
+    public void setPrice(int arg) {
+        switch (arg) {
+            case REGULAR:
+                price = new RegularPrice();
+                break;
+            case CHILDRENS:
+                price = new ChildPriceCode();
+                break;
+            case NEW_RELEASE:
+                price = new NewReleasePrice();
+                break;
+            default:
+                throw new IllegalArgumentException("가격 코드가 잘못됐습니다");
+        }
 
-    public int getPriceCode() {
-        return priceCode;
-    }
-
-    public void setPriceCode(int priceCode) {
-        this.priceCode = priceCode;
     }
 
     // 최초 Customer.amountFor -> Rental.getCharge() 로 리팩터링됨
     // Rental.getCharge()  -> Movie 로 리팩터링됨
     double getCharge(int daysRented) {
-        double result = 0;
-        switch (getPriceCode()) {
-            case REGULAR:
-                result += 2;
-                if (daysRented > 2) {
-                    result += (daysRented - 2) * 1.5;
-                }
-            case NEW_RELEASE:
-                result += daysRented * 3;
-                break;
-            case CHILDRENS:
-                result += 1.5;
-                if (daysRented > 3) {
-                    result += (daysRented - 3) * 1.5;
-                }
-                break;
-        }
-        return result;
+        return price.getCharge(daysRented);
     }
 
     public int getFrequentRenterPoints(int daysRented) {
 
         // 최신물을 이틀 이상 대여하면 보너스 포인트 지급하고 그 외엔 1 포인트로 지급하는 코드를
         // 뺴내 getFrequentRenterPoints 메서드로 만들고 이 Retnal 클래스로 옮겼다.
-        if ((getPriceCode() == NEW_RELEASE) && (daysRented > 1)) {
-            return 2;
-        }
-        return 1;
-
+        return price.getFrequentRenterPoints(daysRented);
     }
 }
+
